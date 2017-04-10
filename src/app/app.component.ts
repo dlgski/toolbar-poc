@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgRedux } from '@angular-redux/store';
+
+import { AppState } from './store/store';
+import { store } from './store/store';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'Toolbar Angular 2!';
+  isOpen: boolean;
+
+  constructor(
+    private ngRedux: NgRedux<AppState>) {
+    ngRedux.provideStore(store);
+
+    this.isOpen = false;
+  }
+
+  ngOnInit() {
+
+  }
+
+  toggleSlider(ev) {
+    console.log('event : ', ev);
+    this.isOpen = !this.isOpen;
+  }
 }

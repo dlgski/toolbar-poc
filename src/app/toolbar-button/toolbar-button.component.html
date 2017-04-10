@@ -1,0 +1,14 @@
+<button
+  class="btn"
+  id="id"
+  *ngIf="isEnable"
+  (click)="openAction(actionId)">
+    {{name}}
+</button>
+
+<button
+  class="btn"
+  id="id"
+  *ngIf="!isEnable" disabled>
+  {{name}}
+</button>
