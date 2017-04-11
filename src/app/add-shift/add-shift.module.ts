@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { AddShiftComponent }   from './add-shift.component';
-import { routing } from '../app.routing';
+import { routing } from './add-shift.routing';
 
 @NgModule({
   imports: [routing],

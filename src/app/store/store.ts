@@ -5,9 +5,9 @@ import {
 } from 'redux';
 
 import { contextReducer } from './context.reducer';
-import * as createLogger from 'redux-logger';
 
-const logger = createLogger();
+import * as createLogger from 'redux-logger';
+const logger = (createLogger as any)();
 
 export interface ContextState {
   date: string,
