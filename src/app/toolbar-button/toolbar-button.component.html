@@ -1,14 +1,15 @@
 <button
   class="btn"
-  id="id"
+  id="{{id}}"
   *ngIf="isEnable"
-  (click)="openAction(actionId)">
+  (click)="openAction(actionId)"
+  routerLink="/{{lazyLoadRouting}}">
     {{name}}
 </button>
 
 <button
   class="btn"
-  id="id"
+  id="{{id}}"
   *ngIf="!isEnable" disabled>
   {{name}}
 </button>

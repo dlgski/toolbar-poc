@@ -11,21 +11,13 @@ import { store } from './store/store';
 })
 export class AppComponent {
   title = 'Toolbar Angular 2!';
-  isOpen: boolean;
 
   constructor(
     private ngRedux: NgRedux<AppState>) {
     ngRedux.provideStore(store);
-
-    this.isOpen = false;
   }
 
   ngOnInit() {
 
-  }
-
-  toggleSlider(ev) {
-    console.log('event : ', ev);
-    this.isOpen = !this.isOpen;
   }
 }

@@ -15,14 +15,17 @@ export class ToolbarButtonComponent implements OnInit {
   private name;
   private isEnable;
   private actionId;
+  private lazyLoadRouting;
 
   constructor(private ngRedux: NgRedux<AppState>) { }
 
   ngOnInit() {
+    console.log(this.options);
     this.id = this.options.id;
     this.name = this.options.name;
     this.isEnable = this.options.isEnable;
     this.actionId = this.options.actionId;
+    this.lazyLoadRouting = this.options.lazyLoadRouting;
   }
 
   openAction(id) {
