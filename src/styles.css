@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 slider.is-open aside {
   transform: translateX(0);
 }

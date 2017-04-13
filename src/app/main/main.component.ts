@@ -15,8 +15,12 @@ export class MainComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleSlider(ev) {
-    this.isOpen = !this.isOpen;
+  openSlider(ev) {
+    this.isOpen = true;
+  }
+
+  closeSlider() {
+    this.isOpen = false;
   }
 
 }

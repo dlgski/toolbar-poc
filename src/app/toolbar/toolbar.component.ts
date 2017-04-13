@@ -19,10 +19,5 @@ export class ToolbarComponent implements OnInit {
       });
   }
 
-  onClick(ev) {
-    console.log('toolbar onclick : ', ev);
-    this.onButtonClick.emit();
-  }
-
 
 }

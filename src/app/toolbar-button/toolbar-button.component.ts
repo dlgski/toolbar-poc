@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { AppState } from '../store/store';
 
@@ -9,7 +9,6 @@ import { AppState } from '../store/store';
 })
 export class ToolbarButtonComponent implements OnInit {
   @Input() private options;
-  //@Output() onClick = new EventEmitter();
 
   private id;
   private name;
@@ -30,7 +29,8 @@ export class ToolbarButtonComponent implements OnInit {
       type: 'OPEN_ACTION',
       payload: {
         date: new Date(),
-        actionId: id
+        actionId: id,
+        employeeId: 100
       }
     })
   }

@@ -13,14 +13,14 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ToolbarService } from './toolbar.service';
 
 import { AdDirective } from './ad.directive';
-import { AddPaycodeComponent } from './add-paycode/add-paycode.component';
-import { ReplaceShiftComponent } from './replace-shift/replace-shift.component';
 import { SliderComponent } from './slider/slider.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'main', pathMatch: 'full'},
   {path: 'main', component: MainComponent },
-  {path: 'add-shift', loadChildren: './add-shift/add-shift.module#AddShiftModule'}
+  {path: 'add-shift', loadChildren: './add-shift/add-shift.module#AddShiftModule'},
+  {path: 'add-paycopde', loadChildren: './add-paycode/add-paycode.module#AddPaycodeModule'},
+  {path: 'replace-shift', loadChildren: './replace-shift/replace-shift.module#ReplaceShiftModule'}
 ];
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
 
@@ -30,12 +30,9 @@ export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
     MainComponent,
     ToolbarButtonComponent,
     ToolbarComponent,
-    AddPaycodeComponent,
-    ReplaceShiftComponent,
     SliderComponent,
     AdDirective
   ],
-  //entryComponents: [AddShiftComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -43,7 +40,9 @@ export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
     NgReduxModule,
     routing
   ],
-  providers: [ToolbarService, SystemJsNgModuleLoader],
+  providers: [
+    ToolbarService,
+    SystemJsNgModuleLoader],
   bootstrap: [AppComponent]
 })
 export class AppModule {
