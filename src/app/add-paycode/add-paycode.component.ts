@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'add-paycode',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-paycode.component.css']
 })
 export class AddPaycodeComponent implements OnInit {
+  @Input() data: any;
 
   constructor() { }
 
