@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, SystemJsNgModuleLoader, NgModuleFactory, ViewChild, ViewContainerRef, ReflectiveInjector } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, SystemJsNgModuleLoader, NgModuleFactory, ViewChild, ViewContainerRef, ReflectiveInjector } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { AppState } from '../store/store';
 
@@ -13,9 +13,11 @@ import { ReplaceShiftComponent } from '../replace-shift/replace-shift.component'
   styleUrls: ['./slider.component.css']
 })
 export class SliderComponent implements OnInit {
+  @Input() private state;
   private actionSelected;
   private action;
   private componentRef;
+  private subscription;
   @Output() onCloseButtonClick = new EventEmitter();
 
   @ViewChild(AdDirective) adHost: AdDirective;
@@ -26,7 +28,17 @@ export class SliderComponent implements OnInit {
     public viewContainerRef: ViewContainerRef
   ) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngOnChanges(changes) {
+    if(changes.state.currentValue) {
+      this.subscribeActionSelected();
+    } else {
+      this.unsubscribeActionSelected();
+    }
+  }
+
+  subscribeActionSelected() {
     this.actionSelected = this.ngRedux.select(state => state.context)
       .subscribe(context => {
         this.action = context.actionId;
@@ -34,11 +46,17 @@ export class SliderComponent implements OnInit {
         if( context.actionId === 'addShift' ) {
           this.getAddShift();
         } else if ( context.actionId === 'addPaycode' ) {
-          this.getAddPaycode()
+          this.getAddPaycode();
         } else if ( context.actionId === 'replaceShift' ) {
           this.getReplaceShift();
         }
       });
+  }
+
+  unsubscribeActionSelected() {
+    if(this.actionSelected) {
+      this.actionSelected.unsubscribe();
+    }
   }
 
   getAddShift() {
@@ -75,7 +93,4 @@ export class SliderComponent implements OnInit {
       this.componentRef.instance.data = context;
     });
   }
-
-
-
 }
