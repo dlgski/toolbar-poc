@@ -1,3 +1,7 @@
 <toolbar (onButtonClick)="openSlider()"></toolbar>
-<slider (onCloseButtonClick)="closeSlider()" [class]="isOpen ? 'is-open' : ''"></slider>
+<slider
+  (onCloseButtonClick)="closeSlider()"
+  [class]="isOpen ? 'is-open' : ''"
+  [state]="isOpen">
+</slider>
 <h2>Main</h2>
